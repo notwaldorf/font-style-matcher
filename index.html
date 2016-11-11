@@ -146,7 +146,8 @@
 
   function fout(event) {
     if (!event.target.checked) {
-      clearTimeout(window.__timeout);
+      clearTimeout(window.__timeout1);
+      clearTimeout(window.__timeout2);
       fallbackOutput.style.visibility = 'visible';
       webfontOutput.style.visibility = 'visible';
     } else {
@@ -158,13 +159,13 @@
     fallbackOutput.style.visibility = 'hidden';
     webfontOutput.style.visibility = 'hidden';
 
-    setTimeout(function() {
+    window.__timeout1 = setTimeout(function() {
       fallbackOutput.style.visibility = 'visible';
 
       setTimeout(function() {
         fallbackOutput.style.visibility = 'hidden';
         webfontOutput.style.visibility = 'visible';
-        window.__timeout = setTimeout(startFout, 1000);
+        window.__timeout2 = setTimeout(startFout, 1000);
       }, 500);
     }, 100)
   }
