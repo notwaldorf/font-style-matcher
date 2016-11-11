@@ -29,7 +29,7 @@ a:hover {
   margin-bottom: 20px;
 }
 
-input {
+input[type=number] {
   width: 40px;
   margin-right: 6px;
 }
