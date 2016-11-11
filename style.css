@@ -3,10 +3,19 @@ body {
   -webkit-font-smoothing: antialiased;
   margin: 0;
 }
-/*
-div {
-  border: 1px solid red;
-}*/
+
+a:link, a:visited {
+  color: #0074D9;
+  text-decoration: none;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+a:hover {
+  background-color: #fde100;
+  border-radius: 3px;
+  text-decoration: none;
+}
 
 .container {
   margin: 40px;
@@ -33,4 +42,15 @@ input.font-size {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+footer {
+  margin-top: 50px;
+  padding-top: 8px;
+  border-top: 2px solid #fde100;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 2px;
+  padding-right: 6px;
 }
