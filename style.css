@@ -29,13 +29,26 @@ a:hover {
 
 .columns > div {
 	width: 50%;
-	padding: 10px;
 }
 
 .columns > div:first-child {
 	margin-right: 20px;
 }
 
+@media (max-width: 500px) {
+  .columns {
+    display: block;
+  }
+
+  .columns > div {
+  	width: 100%;
+  }
+
+  .columns > div:first-child {
+  	margin-right: 0px;
+    margin-bottom: 40px;
+  }
+}
 
 .sample {
   font-weight: normal;
@@ -56,12 +69,15 @@ input[type=number] {
 
 .output {
   position: relative;
+  min-height: 20px;
 }
 
 .overlap-font {
   position: absolute;
   top: 0;
   left: 0;
+  bottom: 0;
+  right: 0;
 }
 
 footer {
