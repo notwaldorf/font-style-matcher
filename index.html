@@ -38,12 +38,20 @@
     </div>
 
     <h2>Overlapped</h2>
+    <div class="output">
+      <div id="fallbackOutput" class="overlap-font">The fox jumped over the lazy dog, the scoundrel.</div>
+      <div id="webfontOutput" class="overlap-font">The fox jumped over the lazy dog, the scoundrel.</div>
+
+    </div>
 </div>
 </body>
 
 <script>
-fallback.style.fontFamily = fallback.textContent;
-webfont.style.fontFamily = webfont.textContent;
+fallback.style.fontFamily = fallbackOutput.style.fontFamily = fallback.textContent;
+webfont.style.fontFamily = webfontOutput.style.fontFamily = webfont.textContent;
+fallback.style.fontSize = fallbackOutput.style.fontSize = '16px';
+webfont.style.fontSize = webfontOutput.style.fontSize = '16px';
+
 
 // TODO: this could also be on-input
 fallbackSize.addEventListener('change', updateFontSize);
@@ -51,7 +59,9 @@ webfontSize.addEventListener('change', updateFontSize);
 
 function updateFontSize(event) {
   var value = event.target.value;
-  document.getElementById(event.target.dataset.target).style.fontSize = value + 'px';
+  var which = event.target.dataset.target;
+  document.getElementById(which).style.fontSize = value + 'px';
+  document.getElementById(which + 'Output').style.fontSize = value + 'px';
 }
 </script>
 </html>

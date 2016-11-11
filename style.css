@@ -24,3 +24,13 @@ input.font-size {
   width: 40px;
   margin-right: 6px;
 }
+
+.output {
+  position: relative;
+}
+
+.overlap-font {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
