@@ -43,6 +43,10 @@ a:hover {
 
 input {
   margin-bottom: 6px;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid black;
 }
 
 input[type=number] {
