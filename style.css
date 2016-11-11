@@ -19,3 +19,8 @@ div {
 .settings {
   margin-bottom: 20px;
 }
+
+input.font-size {
+  width: 40px;
+  margin-right: 6px;
+}

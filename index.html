@@ -15,25 +15,43 @@
   <div class="container">
     <h2>Font height matcher</h2>
 
-      <div class="settings">
-        <b>Fallback font: </b>
-        <span id="fallback" class="sample">Georgia</span>
-        <br>
-        <b>Size: </b>
-      </div>
-      <div class="settings">
-        <b>Web font: </b>
-        <span id="webfont" class="sample">Merriweather</span>
-        <br>
-        <b>Size: </b>
-      </div>
-  </div>
+    <div class="settings">
+      <b>Fallback font: </b>
+      <span id="fallback" class="sample">Georgia</span>
+      <br>
+      <b>Size: (px) </b>
+      <input type="number" length="3" value="16"
+          id="fallbackSize"
+          class="font-size"
+          data-target="fallback">px
+    </div>
+
+    <div class="settings">
+      <b>Web font: </b>
+      <span id="webfont" class="sample">Merriweather</span>
+      <br>
+      <b>Size: </b>
+      <input type="number" length="3" value="16"
+          id="webfontSize"
+          class="font-size"
+          data-target="webfont">px
+    </div>
+
+    <h2>Overlapped</h2>
+</div>
 </body>
 
 <script>
-document.body.onload = function() {
-  fallback.style.fontFamily = fallback.textContent;
-  webfont.style.fontFamily = webfont.textContent;
+fallback.style.fontFamily = fallback.textContent;
+webfont.style.fontFamily = webfont.textContent;
+
+// TODO: this could also be on-input
+fallbackSize.addEventListener('change', updateFontSize);
+webfontSize.addEventListener('change', updateFontSize);
+
+function updateFontSize(event) {
+  var value = event.target.value;
+  document.getElementById(event.target.dataset.target).style.fontSize = value + 'px';
 }
 </script>
 </html>
