@@ -1,0 +1,39 @@
+<html>
+<head>
+  <title>font-height-matcher</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h2>Font height matcher</h2>
+
+      <div class="settings">
+        <b>Fallback font: </b>
+        <span id="fallback" class="sample">Georgia</span>
+        <br>
+        <b>Size: </b>
+      </div>
+      <div class="settings">
+        <b>Web font: </b>
+        <span id="webfont" class="sample">Merriweather</span>
+        <br>
+        <b>Size: </b>
+      </div>
+  </div>
+</body>
+
+<script>
+document.body.onload = function() {
+  fallback.style.fontFamily = fallback.textContent;
+  webfont.style.fontFamily = webfont.textContent;
+}
+</script>
+</html>
