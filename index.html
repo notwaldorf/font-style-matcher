@@ -27,6 +27,11 @@
             id="fallbackSize"
             data-target="fallback">px
         <br>
+        <b>Weight: </b>
+        <input type="number" length="4" value="300"
+            id="fallbackWeight"
+            data-target="fallback">
+        <br>
         <b>Letter spacing: (px) </b>
         <input type="number" length="3" value="1"
             id="fallbackSpacing"
@@ -45,6 +50,11 @@
         <input type="number" length="3" value="16"
             id="webfontSize"
             data-target="webfont">px
+        <br>
+        <b>Weight: </b>
+        <input type="number" length="4" value="300"
+            id="webfontWeight"
+            data-target="webfont">
         <br>
         <b>Letter spacing: (px) </b>
         <input type="number" length="3" value="1"
@@ -77,6 +87,9 @@
   fallback.style.fontSize = fallbackOutput.style.fontSize = '16px';
   webfont.style.fontSize = webfontOutput.style.fontSize = '16px';
 
+  fallbackName.addEventListener('change', updateFontFamily);
+  webfontName.addEventListener('change', updateFontFamily);
+
   fallbackSize.addEventListener('change', updateFontSize);
   fallbackSize.addEventListener('input', updateFontSize);
   webfontSize.addEventListener('change', updateFontSize);
@@ -87,8 +100,10 @@
   webfontSpacing.addEventListener('change', updateFontSpacing);
   webfontSpacing.addEventListener('input', updateFontSpacing);
 
-  fallbackName.addEventListener('change', updateFontFamily);
-  webfontName.addEventListener('change', updateFontFamily);
+  fallbackWeight.addEventListener('change', updateFontWeight);
+  fallbackWeight.addEventListener('input', updateFontWeight);
+  webfontWeight.addEventListener('change', updateFontWeight);
+  webfontWeight.addEventListener('input', updateFontWeight);
 
   function updateFontSize(event) {
     var value = event.target.value + 'px';
@@ -109,6 +124,13 @@
     var which = event.target.dataset.target;
     updateStyle('font-family', which, value);
     updateStyle('font-family', which + 'Output', value);
+  }
+
+  function updateFontWeight(event) {
+    var value = event.target.value;
+    var which = event.target.dataset.target;
+    updateStyle('font-weight', which, value);
+    updateStyle('font-weight', which + 'Output', value);
   }
 
   function updateStyle(name, element, value) {
