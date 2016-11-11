@@ -15,35 +15,44 @@
   <div class="container">
     <h2>Font height matcher</h2>
 
-    <div class="settings">
-      <b>Fallback font: </b>
-      <span id="fallback" class="sample">Georgia</span>
-      <br>
-      <b>Size: (px) </b>
-      <input type="number" length="3" value="16"
-          id="fallbackSize"
-          data-target="fallback">px
-      <br>
-      <b>Letter spacing: (px) </b>
-      <input type="number" length="3" value="1"
-          id="fallbackSpacing"
-          data-target="fallback">px
+    <div class="columns">
+      <div>
+        <b>Fallback font: </b>
+        <input value="Georgia"
+            id="fallbackName"
+            data-target="fallback">
+        <br>
+        <b>Size: (px) </b>
+        <input type="number" length="3" value="16"
+            id="fallbackSize"
+            data-target="fallback">px
+        <br>
+        <b>Letter spacing: (px) </b>
+        <input type="number" length="3" value="1"
+            id="fallbackSpacing"
+            data-target="fallback">px
+        <br>
+        <p id="fallback">The fox jumped over the lazy dog, the scoundrel.</p>
+      </div>
 
-    </div>
-
-    <div class="settings">
-      <b>Web font: </b>
-      <span id="webfont" class="sample">Merriweather</span>
-      <br>
-      <b>Size: </b>
-      <input type="number" length="3" value="16"
-          id="webfontSize"
-          data-target="webfont">px
-      <br>
-      <b>Letter spacing: (px) </b>
-      <input type="number" length="3" value="1"
-          id="webfontSpacing"
-          data-target="webfont">px
+      <div>
+        <b>Web font: </b>
+        <input value="Merriweather"
+            id="webfontName"
+            data-target="webfont">
+        <br>
+        <b>Size: </b>
+        <input type="number" length="3" value="16"
+            id="webfontSize"
+            data-target="webfont">px
+        <br>
+        <b>Letter spacing: (px) </b>
+        <input type="number" length="3" value="1"
+            id="webfontSpacing"
+            data-target="webfont">px
+        <br>
+        <p id="webfont">The fox jumped over the lazy dog, the scoundrel.</p>
+      </div>
     </div>
 
     <h2>Overlapped</h2>
@@ -63,37 +72,47 @@
 </body>
 
 <script>
-  fallback.style.fontFamily = fallbackOutput.style.fontFamily = fallback.textContent;
-  webfont.style.fontFamily = webfontOutput.style.fontFamily = webfont.textContent;
+  fallback.style.fontFamily = fallbackOutput.style.fontFamily = fallbackName.value;
+  webfont.style.fontFamily = webfontOutput.style.fontFamily = webfontName.value;
   fallback.style.fontSize = fallbackOutput.style.fontSize = '16px';
   webfont.style.fontSize = webfontOutput.style.fontSize = '16px';
 
   fallbackSize.addEventListener('change', updateFontSize);
-  webfontSize.addEventListener('change', updateFontSize);
   fallbackSize.addEventListener('input', updateFontSize);
+  webfontSize.addEventListener('change', updateFontSize);
   webfontSize.addEventListener('input', updateFontSize);
 
   fallbackSpacing.addEventListener('change', updateFontSpacing);
-  webfontSpacing.addEventListener('change', updateFontSpacing);
   fallbackSpacing.addEventListener('input', updateFontSpacing);
+  webfontSpacing.addEventListener('change', updateFontSpacing);
   webfontSpacing.addEventListener('input', updateFontSpacing);
 
+  fallbackName.addEventListener('change', updateFontFamily);
+  webfontName.addEventListener('change', updateFontFamily);
+
   function updateFontSize(event) {
-    var value = event.target.value;
+    var value = event.target.value + 'px';
     var which = event.target.dataset.target;
     updateStyle('font-size', which, value);
     updateStyle('font-size', which + 'Output', value);
   }
 
   function updateFontSpacing(event) {
-    var value = event.target.value;
+    var value = event.target.value + 'px';
     var which = event.target.dataset.target;
     updateStyle('letter-spacing', which, value);
     updateStyle('letter-spacing', which + 'Output', value);
   }
 
+  function updateFontFamily(event) {
+    var value = event.target.value;
+    var which = event.target.dataset.target;
+    updateStyle('font-family', which, value);
+    updateStyle('font-family', which + 'Output', value);
+  }
+
   function updateStyle(name, element, value) {
-    document.getElementById(element).style[name] = value + 'px';
+    document.getElementById(element).style[name] = value;
   }
 </script>
 </html>

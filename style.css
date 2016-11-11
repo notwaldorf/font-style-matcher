@@ -21,12 +21,28 @@ a:hover {
   margin: 40px;
 }
 
+.columns {
+	display: -ms-flex;
+	display: -webkit-flex;
+	display: flex;
+}
+
+.columns > div {
+	width: 50%;
+	padding: 10px;
+}
+
+.columns > div:first-child {
+	margin-right: 20px;
+}
+
+
 .sample {
   font-weight: normal;
 }
 
-.settings {
-  margin-bottom: 20px;
+input {
+  margin-bottom: 6px;
 }
 
 input[type=number] {
@@ -53,4 +69,8 @@ footer {
   font-size: 10px;
   letter-spacing: 2px;
   padding-right: 6px;
+}
+
+hr {
+  background: red;
 }
