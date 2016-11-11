@@ -22,8 +22,13 @@
       <b>Size: (px) </b>
       <input type="number" length="3" value="16"
           id="fallbackSize"
-          class="font-size"
           data-target="fallback">px
+      <br>
+      <b>Letter spacing: (px) </b>
+      <input type="number" length="3" value="1"
+          id="fallbackSpacing"
+          data-target="fallback">px
+
     </div>
 
     <div class="settings">
@@ -33,7 +38,11 @@
       <b>Size: </b>
       <input type="number" length="3" value="16"
           id="webfontSize"
-          class="font-size"
+          data-target="webfont">px
+      <br>
+      <b>Letter spacing: (px) </b>
+      <input type="number" length="3" value="1"
+          id="webfontSpacing"
           data-target="webfont">px
     </div>
 
@@ -64,11 +73,27 @@
   fallbackSize.addEventListener('input', updateFontSize);
   webfontSize.addEventListener('input', updateFontSize);
 
+  fallbackSpacing.addEventListener('change', updateFontSpacing);
+  webfontSpacing.addEventListener('change', updateFontSpacing);
+  fallbackSpacing.addEventListener('input', updateFontSpacing);
+  webfontSpacing.addEventListener('input', updateFontSpacing);
+
   function updateFontSize(event) {
     var value = event.target.value;
     var which = event.target.dataset.target;
-    document.getElementById(which).style.fontSize = value + 'px';
-    document.getElementById(which + 'Output').style.fontSize = value + 'px';
+    updateStyle('font-size', which, value);
+    updateStyle('font-size', which + 'Output', value);
+  }
+
+  function updateFontSpacing(event) {
+    var value = event.target.value;
+    var which = event.target.dataset.target;
+    updateStyle('letter-spacing', which, value);
+    updateStyle('letter-spacing', which + 'Output', value);
+  }
+
+  function updateStyle(name, element, value) {
+    document.getElementById(element).style[name] = value + 'px';
   }
 </script>
 </html>
