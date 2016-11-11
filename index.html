@@ -75,7 +75,9 @@
       <div id="fallbackOutput" class="overlap-font">The fox jumped over the lazy dog, the scoundrel.</div>
       <div id="webfontOutput" class="overlap-font">The fox jumped over the lazy dog, the scoundrel.</div>
     </div>
-    <br>
+    <br><br>
+    <button onclick="fout()">Simulate FOUT</button>
+    <button onclick="stop()">Static</button>
 
     <footer>
       <p>made with ✨ by <a href="https://twitter.com/notwaldorf">monica</a> and
@@ -140,6 +142,24 @@
 
   function updateStyle(name, element, value) {
     document.getElementById(element).style[name] = value;
+  }
+
+  function fout() {
+    fallbackOutput.style.visibility = 'hidden';
+    webfontOutput.style.visibility = 'hidden';
+    setTimeout(function() {
+      fallbackOutput.style.visibility = 'visible';
+
+      setTimeout(function() {
+        fallbackOutput.style.visibility = 'hidden';
+        webfontOutput.style.visibility = 'visible';
+      }, 500);
+    }, 100)
+  }
+
+  function stop() {
+    fallbackOutput.style.visibility = 'visible';
+    webfontOutput.style.visibility = 'visible';
   }
 </script>
 </html>
