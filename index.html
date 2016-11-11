@@ -28,9 +28,11 @@
             data-target="fallback">px
         <br>
         <b>Weight: </b>
-        <input type="number" length="4" value="300"
+        <input type="range" value="300"
+            min="100" max="900" step="100"
             id="fallbackWeight"
             data-target="fallback">
+        <span id="fallbackWeightDisplay">300</span>
         <br>
         <b>Letter spacing: (px) </b>
         <input type="number" length="3" value="1"
@@ -52,9 +54,11 @@
             data-target="webfont">px
         <br>
         <b>Weight: </b>
-        <input type="number" length="4" value="300"
+        <input type="range" value="300"
+            min="100" max="900" step="100"
             id="webfontWeight"
             data-target="webfont">
+        <span id="webfontWeightDisplay">300</span>
         <br>
         <b>Letter spacing: (px) </b>
         <input type="number" length="3" value="1"
@@ -131,6 +135,7 @@
     var which = event.target.dataset.target;
     updateStyle('font-weight', which, value);
     updateStyle('font-weight', which + 'Output', value);
+    document.getElementById(which + 'WeightDisplay').textContent = value;
   }
 
   function updateStyle(name, element, value) {
