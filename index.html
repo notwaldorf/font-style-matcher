@@ -54,21 +54,21 @@
 </body>
 
 <script>
-fallback.style.fontFamily = fallbackOutput.style.fontFamily = fallback.textContent;
-webfont.style.fontFamily = webfontOutput.style.fontFamily = webfont.textContent;
-fallback.style.fontSize = fallbackOutput.style.fontSize = '16px';
-webfont.style.fontSize = webfontOutput.style.fontSize = '16px';
+  fallback.style.fontFamily = fallbackOutput.style.fontFamily = fallback.textContent;
+  webfont.style.fontFamily = webfontOutput.style.fontFamily = webfont.textContent;
+  fallback.style.fontSize = fallbackOutput.style.fontSize = '16px';
+  webfont.style.fontSize = webfontOutput.style.fontSize = '16px';
 
+  fallbackSize.addEventListener('change', updateFontSize);
+  webfontSize.addEventListener('change', updateFontSize);
+  fallbackSize.addEventListener('input', updateFontSize);
+  webfontSize.addEventListener('input', updateFontSize);
 
-// TODO: this could also be on-input
-fallbackSize.addEventListener('change', updateFontSize);
-webfontSize.addEventListener('change', updateFontSize);
-
-function updateFontSize(event) {
-  var value = event.target.value;
-  var which = event.target.dataset.target;
-  document.getElementById(which).style.fontSize = value + 'px';
-  document.getElementById(which + 'Output').style.fontSize = value + 'px';
-}
+  function updateFontSize(event) {
+    var value = event.target.value;
+    var which = event.target.dataset.target;
+    document.getElementById(which).style.fontSize = value + 'px';
+    document.getElementById(which + 'Output').style.fontSize = value + 'px';
+  }
 </script>
 </html>
