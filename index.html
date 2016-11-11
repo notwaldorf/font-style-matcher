@@ -76,8 +76,8 @@
       <div id="webfontOutput" class="overlap-font">The fox jumped over the lazy dog, the scoundrel.</div>
     </div>
     <br><br>
-    <button onclick="fout()">Simulate FOUT</button>
-    <button onclick="stop()">Static</button>
+
+    <input type="checkbox" onchange="fout(event)">Simulate FOUT
 
     <footer>
       <p>made with ✨ by <a href="https://twitter.com/notwaldorf">monica</a> and
@@ -144,22 +144,29 @@
     document.getElementById(element).style[name] = value;
   }
 
-  function fout() {
+  function fout(event) {
+    if (!event.target.checked) {
+      clearTimeout(window.__timeout);
+      fallbackOutput.style.visibility = 'visible';
+      webfontOutput.style.visibility = 'visible';
+    } else {
+      startFout();
+    }
+  }
+
+  function startFout() {
     fallbackOutput.style.visibility = 'hidden';
     webfontOutput.style.visibility = 'hidden';
+
     setTimeout(function() {
       fallbackOutput.style.visibility = 'visible';
 
       setTimeout(function() {
         fallbackOutput.style.visibility = 'hidden';
         webfontOutput.style.visibility = 'visible';
+        window.__timeout = setTimeout(startFout, 1000);
       }, 500);
     }, 100)
-  }
-
-  function stop() {
-    fallbackOutput.style.visibility = 'visible';
-    webfontOutput.style.visibility = 'visible';
   }
 </script>
 </html>
