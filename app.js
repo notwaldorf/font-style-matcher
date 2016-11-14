@@ -19,7 +19,8 @@
     // }
   }
 
-  checkbox.addEventListener('change', fout);
+  simulateFout.addEventListener('change', fout);
+  downloadFont.addEventListener('change', download);
 
   fallback.style.fontFamily = fallbackOutput.style.fontFamily = fallbackName.value;
   webfont.style.fontFamily = webfontOutput.style.fontFamily = webfontName.value;
@@ -101,5 +102,20 @@
         window.__timeout2 = setTimeout(startFout, 1000);
       }, 500);
     }, 100)
+  }
+
+  function download(event) {
+    var shouldDownload = event.target.checked;
+
+    if (!shouldDownload)
+      return;
+
+    var url = 'https://fonts.googleapis.com/css?family=' + webfontName.value.trim() +
+        ':300,300i,400,400i,700,700i,900,900i';
+
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = url;
+    document.head.appendChild(link);
   }
 })();
