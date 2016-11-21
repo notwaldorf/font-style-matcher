@@ -1,9 +1,9 @@
 (function() {
   'use strict';
 
-  if ('xserviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js').then(_ => {
-      console.log('service worker is all cool 🐳');
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js', {scope: '/font-height-matcher/'}).then(_ => {
+      console.log('service worker is all cool 🐳', location.origin);
     }).catch(e => {
       console.error('service worker is not so cool 🔥', e);
       throw e;
