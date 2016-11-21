@@ -3,11 +3,11 @@ var VERSION = '0.0.1';
 this.addEventListener('install', function(e) {
   e.waitUntil(caches.open(VERSION).then(cache => {
     return cache.addAll([
-      '/',
-      '/index.html',
-      '/style.css',
-      '/app.js',
-      '/manifest.json',
+      './',
+      './index.html',
+      './style.css',
+      './app.js',
+      './manifest.json',
     ]).then(_ => this.skipWaiting());
 }))});
 
