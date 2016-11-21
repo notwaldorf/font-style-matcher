@@ -33,8 +33,17 @@
 </head>
 <body>
   <div class="container">
-    <h2>Font height matcher</h2>
-
+    <h1>Font style matcher</h1>
+    <p>
+      If you're using a web font, you're bound to see a flash of unstyled text (or FOUC),
+      between the initial render of your websafe font and the webfont that you've chosen.
+      This usually results in a jarring shift in layout, due to
+      sizing discrepancies between the two fonts. To minimize this
+      discrepancy, you can try to match the fallback font and the intended webfont’s
+      x-heights and widths <a href="http://helenvholmes.com/writing/type-is-your-right">[1]</a>.
+      This tool helps you do <b><i>exactly</i></b> that.
+    </p>
+    <br>
     <div class="columns">
       <div>
         <div class="input-field">
@@ -61,12 +70,11 @@
         </div>
 
         <div class="input-field">
-          <input type="range" value="1" min="-2" max="2" step="0.1"
+          <input type="range" value="0" min="-2" max="2" step="0.1"
               id="fallbackSpacing"
               data-target="fallback">
-          <label>Letter spacing: <span id="fallbackSpacingDisplay">1px</span></label>
+          <label>Letter spacing: <span id="fallbackSpacingDisplay">0px</span></label>
         </div>
-
         <p id="fallback">The fox jumped over the lazy dog, the scoundrel.</p>
       </div>
 
@@ -77,7 +85,7 @@
               data-target="webfont">
           <label for="webfontName">Web font</label>
           <br>
-          <input id="downloadFont" type="checkbox">
+          <input id="downloadFont" type="checkbox" checked>
           <span class="text">Download from Google Fonts</span>
         </div>
         <br>
@@ -99,32 +107,35 @@
         </div>
 
         <div class="input-field">
-          <input type="range" value="1" min="-2" max="2" step="0.1"
+          <input type="range" value="0" min="-2" max="2" step="0.1"
               id="webfontSpacing"
               data-target="webfont">
-          <label>Letter spacing: <span id="webfontSpacingDisplay">1px</span></label>
+          <label>Letter spacing: <span id="webfontSpacingDisplay">0px</span></label>
         </div>
 
         <p id="webfont">The fox jumped over the lazy dog, the scoundrel.</p>
       </div>
     </div>
 
-    <h2>Overlapped</h2>
-    <p>(hint: Georgia at 18px and Merriweather at 16px is a winner)</p>
+    <h1>Overlapped</h1>
+    <p>In the default example, Merriweather is taller and wider than Georgia, so if you
+      bump Georgia's <b>height</b> up to 18px, and its <b>letter spacing</b> to 0.2px
+      you'll get a pretty close match!</p>
+
+    <p>
+      <input type="checkbox" id="simulateFout">See layout shift due to FOUC
+    </p>
+
+    <br>
     <div class="output">
       <div id="fallbackOutput" class="overlap-font">The fox jumped over the lazy dog, the scoundrel.</div>
       <div id="webfontOutput" class="overlap-font">The fox jumped over the lazy dog, the scoundrel.</div>
     </div>
-    <!-- mah clearfix is better than yo clearfix -->
-    <br><br>
 
-    <div>
-      <input type="checkbox" id="simulateFout">Simulate FOUT
-    </div>
     <footer>
-      <p>made with ✨ by <a href="https://twitter.com/notwaldorf">monica</a> and
-        <a href="https://twitter.com/helenvholmes">helen</a>.
-        find this on <a href="https://github.com/notwaldorf/font-height-matcher">github</a></p>
+      made with ✨ by <a href="https://twitter.com/notwaldorf">monica</a>. inspired
+        by <a href="https://twitter.com/helenvholmes">helen's</a> blog <a href="http://helenvholmes.com/writing/type-is-your-right">post</a>.
+        find this on <a href="https://github.com/notwaldorf/font-height-matcher">github</a>
     </footer>
   </div>
 </body>

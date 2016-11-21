@@ -21,6 +21,7 @@
 
   simulateFout.addEventListener('change', fout);
   downloadFont.addEventListener('change', download);
+  download();
 
   fallback.style.fontFamily = fallbackOutput.style.fontFamily = fallbackName.value;
   webfont.style.fontFamily = webfontOutput.style.fontFamily = webfontName.value;
@@ -106,8 +107,8 @@
     }, 100)
   }
 
-  function download(event) {
-    var shouldDownload = event.target.checked;
+  function download() {
+    var shouldDownload = downloadFont.checked;
 
     if (!shouldDownload)
       return;
