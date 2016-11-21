@@ -29,7 +29,6 @@
 
   <meta name="theme-color" content="#202020">
   <link rel="manifest" href="./manifest.json">
-
   <link rel="stylesheet" type="text/css" href="./style.css">
 </head>
 <body>
@@ -38,56 +37,71 @@
 
     <div class="columns">
       <div>
-        <b>Fallback font: </b>
-        <input value="Georgia"
-            id="fallbackName"
-            data-target="fallback">
-        <br>
-        <b>Size: (px) </b>
-        <input type="number" length="3" value="16"
-            id="fallbackSize"
-            data-target="fallback">px
-        <br>
-        <b>Weight: </b>
-        <input type="range" value="300"
-            min="100" max="900" step="100"
-            id="fallbackWeight"
-            data-target="fallback">
-        <span id="fallbackWeightDisplay">300</span>
-        <br>
-        <b>Letter spacing: (px) </b>
-        <input type="number" length="3" value="1"
-            id="fallbackSpacing"
-            data-target="fallback">px
-        <br>
+        <div class="input-field">
+          <input value="Georgia" placeholder="Fallback font name"
+              id="fallbackName" data-target="fallback">
+          <label>Fallback font</label>
+        </div>
+
+        <div class="input-field">
+          <input type="number" length="3" value="16" placeholder="Fallback font size"
+              id="fallbackSize"
+              data-target="fallback">
+          <label>Font size (px)</label>
+        </div>
+
+        <div class="input-field">
+          <input type="range" value="300"
+              min="100" max="900" step="100"
+              id="fallbackWeight"
+              data-target="fallback">
+          <label>Font weight: <span id="fallbackWeightDisplay">300</span></label>
+        </div>
+
+        <div class="input-field">
+          <input type="range" value="1" min="-2" max="2" step="0.1"
+              id="fallbackSpacing"
+              data-target="fallback">
+          <label>Letter spacing: <span id="fallbackSpacingDisplay">1px</span></label>
+        </div>
+
         <p id="fallback">The fox jumped over the lazy dog, the scoundrel.</p>
       </div>
 
       <div>
-        <b>Web font: </b>
-        <input value="Merriweather"
-            id="webfontName"
-            data-target="webfont">
-        <br>
-        <input id="downloadFont" type="checkbox">Download from Google Fonts
-        <br>
-        <b>Size: </b>
-        <input type="number" length="3" value="16"
-            id="webfontSize"
-            data-target="webfont">px
-        <br>
-        <b>Weight: </b>
-        <input type="range" value="300"
-            min="100" max="900" step="100"
-            id="webfontWeight"
-            data-target="webfont">
-        <span id="webfontWeightDisplay">300</span>
-        <br>
-        <b>Letter spacing: (px) </b>
-        <input type="number" length="3" value="1"
-            id="webfontSpacing"
-            data-target="webfont">px
-        <br>
+        <div class="input-field">
+          <input value="Merriweather" placeholder="Web font name"
+              id="webfontName"
+              data-target="webfont">
+          <!-- omg what even -->
+          <label class="with-checkbox" for="webfontName">Web font&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="downloadFont" type="checkbox">
+            <span class="text">Download</span>
+          </label>
+        </div>
+
+        <div class="input-field">
+          <input type="number" length="3" value="16" placeholder="Web font size"
+              id="webfontSize"
+              data-target="webfont">
+          <label>Font size (px)</label>
+        </div>
+
+        <div class="input-field">
+          <input type="range" value="300"
+              min="100" max="900" step="100"
+              id="webfontWeight"
+              data-target="webfont">
+          <label>Font weight: <span id="webfontWeightDisplay">300</span></label>
+        </div>
+
+        <div class="input-field">
+          <input type="range" value="1" min="-2" max="2" step="0.1"
+              id="webfontSpacing"
+              data-target="webfont">
+          <label>Letter spacing: <span id="webfontSpacingDisplay">1px</span></label>
+        </div>
+
         <p id="webfont">The fox jumped over the lazy dog, the scoundrel.</p>
       </div>
     </div>

@@ -57,6 +57,7 @@
     var which = event.target.dataset.target;
     updateStyle('letter-spacing', which, value);
     updateStyle('letter-spacing', which + 'Output', value);
+    document.getElementById(which + 'SpacingDisplay').textContent = value;
   }
 
   function updateFontFamily(event) {
