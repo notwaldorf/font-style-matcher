@@ -37,11 +37,11 @@ h1 {
   background-color: #fff200;
   display: inline-block;
   letter-spacing: -1px;
-  font-size: 50px;
   margin: 0;
   line-height: 20px;
   padding: 20px 20px 0 20px;
   margin-bottom: 40px;
+  font-size: 50px;
 }
 
 .columns {
@@ -61,7 +61,8 @@ h1 {
 
 @media (max-width: 500px) {
   h1 {
-    font-size: 20px;
+    font-size: 8.5vw;
+    line-height: 3.5vw;
   }
   .columns {
     display: block;
@@ -174,7 +175,6 @@ footer {
   text-transform: uppercase;
   font-size: 10px;
   letter-spacing: 1px;
-  padding-right: 6px;
 }
 
 hr {
