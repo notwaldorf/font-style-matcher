@@ -80,6 +80,7 @@ a:hover {
   font-size: 18px;
   min-width: 170px;
   width: 100%;
+  max-width: 400px;
 }
 
 .input-field input.with-checkbox {
@@ -93,9 +94,15 @@ a:hover {
   margin-bottom: 8px;
 }
 
-.input-field input:focus {
-  border-bottom: 2px solid #3F51B5;
-  padding-bottom: 4px;
+.input-field input[type="range"] {
+  -webkit-appearance: none;
+  background: #3F51B5;
+  padding: 0;
+  margin-bottom: 8px;
+  height: 2px;
+  outline: none;
+  margin: 24px 0 30px 0;
+  border: none;
 }
 
 .input-field input:focus + label {
