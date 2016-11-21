@@ -92,6 +92,7 @@ a:hover {
   margin: 0;
   padding: 0;
   margin-bottom: 8px;
+  min-width: 0;
 }
 
 .input-field input[type="range"] {
@@ -103,6 +104,13 @@ a:hover {
   outline: none;
   margin: 24px 0 30px 0;
   border: none;
+  outline: none;
+}
+
+::-moz-range-track {
+  background: #3F51B5;
+  border: 0;
+  outline: none;
 }
 
 .input-field input:focus + label {
