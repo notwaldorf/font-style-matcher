@@ -42,12 +42,14 @@
               id="fallbackName" data-target="fallback">
           <label>Fallback font</label>
         </div>
+        <br>
 
         <div class="input-field">
-          <input type="number" length="3" value="16" placeholder="Fallback font size"
+          <input type="range" value="16"
+              min="5" max="50" step="1"
               id="fallbackSize"
               data-target="fallback">
-          <label>Font size (px)</label>
+          <label>Font size: <span id="fallbackSizeDisplay">16px</span></label>
         </div>
 
         <div class="input-field">
@@ -70,21 +72,21 @@
 
       <div>
         <div class="input-field">
-          <input value="Merriweather" placeholder="Web font name"
+          <input value="Merriweather" placeholder="Web font name" class="with-checkbox"
               id="webfontName"
               data-target="webfont">
-          <!-- omg what even -->
-          <label class="with-checkbox" for="webfontName">Web font&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input id="downloadFont" type="checkbox">
-            <span class="text">Download</span>
-          </label>
+          <label for="webfontName">Web font</label>
+          <input id="downloadFont" type="checkbox">
+          <span class="text">Download from Google Fonts</span>
         </div>
+        <br>
 
         <div class="input-field">
-          <input type="number" length="3" value="16" placeholder="Web font size"
+          <input type="range" value="16"
+              min="5" max="50" step="1"
               id="webfontSize"
               data-target="webfont">
-          <label>Font size (px)</label>
+          <label>Font size: <span id="webfontSizeDisplay">16px</span></label>
         </div>
 
         <div class="input-field">

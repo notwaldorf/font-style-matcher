@@ -50,6 +50,7 @@
     var which = event.target.dataset.target;
     updateStyle('font-size', which, value);
     updateStyle('font-size', which + 'Output', value);
+    document.getElementById(which + 'SizeDisplay').textContent = value;
   }
 
   function updateFontSpacing(event) {
