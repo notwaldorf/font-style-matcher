@@ -8,19 +8,11 @@
       console.error('service worker is not so cool 🔥', e);
       throw e;
     });
-
-    // if (navigator.serviceWorker.controller) {
-    //   // Correctly prompt the user to reload during SW phase change.
-    //   navigator.serviceWorker.controller.onstatechange = e => {
-    //     if (e.target.state === 'redundant') {
-    //       document.querySelector('#reload-prompt').style.visibility = 'visible';
-    //     }
-    //   }
-    // }
   }
 
   simulateFout.addEventListener('change', fout);
   downloadFont.addEventListener('change', download);
+  useColours.addEventListener('change', colour);
   download();
 
   fallback.style.fontFamily = fallbackOutput.style.fontFamily = fallbackName.value;
@@ -135,5 +127,10 @@
     link.rel = 'stylesheet';
     link.href = url;
     document.head.appendChild(link);
+  }
+
+  function colour() {
+    var shouldColour = useColours.checked;
+    fallbackOutput.style.color = shouldColour ? 'red' : 'black';
   }
 })();

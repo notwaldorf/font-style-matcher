@@ -1,7 +1,7 @@
 // From https://gist.github.com/kosamari/7c5d1e8449b2fbc97d372675f16b566e
 
 var APP_PREFIX = 'FontStyleMatcher_';     // Identifier for this app (this needs to be consistent across every cache update)
-var VERSION = '0.0.1';                    // Version of the off-line cache (change this value everytime you want to update cache)
+var VERSION = '0.0.2';                    // Version of the off-line cache (change this value everytime you want to update cache)
 var CACHE_NAME = APP_PREFIX + VERSION;
 var URLS = [                            // Add URL you want to cache in this list.
   '/font-style-matcher/',
