@@ -27,6 +27,8 @@
   webfont.style.fontFamily = webfontOutput.style.fontFamily = webfontName.value;
   fallback.style.fontSize = fallbackOutput.style.fontSize = '16px';
   webfont.style.fontSize = webfontOutput.style.fontSize = '16px';
+  fallback.style.lineHeight = fallbackOutput.style.lineHeight = '28px';
+  webfont.style.lineHeight = webfontOutput.style.lineHeight = '28px';
 
   fallbackName.addEventListener('change', updateFontFamily);
   webfontName.addEventListener('change', updateFontFamily);
@@ -35,6 +37,11 @@
   fallbackSize.addEventListener('input', updateFontSize);
   webfontSize.addEventListener('change', updateFontSize);
   webfontSize.addEventListener('input', updateFontSize);
+
+  fallbackLineHeight.addEventListener('change', updateLineHeight);
+  fallbackLineHeight.addEventListener('input', updateLineHeight);
+  webfontLineHeight.addEventListener('change', updateLineHeight);
+  webfontLineHeight.addEventListener('input', updateLineHeight);
 
   fallbackSpacing.addEventListener('change', updateFontSpacing);
   fallbackSpacing.addEventListener('input', updateFontSpacing);
@@ -52,6 +59,14 @@
     updateStyle('font-size', which, value);
     updateStyle('font-size', which + 'Output', value);
     document.getElementById(which + 'SizeDisplay').textContent = value;
+  }
+
+  function updateLineHeight(event) {
+    var value = event.target.value + 'px';
+    var which = event.target.dataset.target;
+    updateStyle('line-height', which, value);
+    updateStyle('line-height', which + 'Output', value);
+    document.getElementById(which + 'LineHeightDisplay').textContent = value;
   }
 
   function updateFontSpacing(event) {
