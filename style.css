@@ -44,6 +44,18 @@ h1 {
   font-size: 50px;
 }
 
+h2 {
+  color: black;
+  background-color: #fff200;
+  display: inline-block;
+  letter-spacing: -1px;
+  margin: 0;
+  line-height: 10px;
+  padding: 10px 10px 0 10px;
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+
 .columns {
 	display: -ms-flex;
 	display: -webkit-flex;
