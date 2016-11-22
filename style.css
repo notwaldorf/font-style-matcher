@@ -72,12 +72,21 @@ h2 {
 }
 
 @media (max-width: 500px) {
-  h1 {
-    font-size: 8.5vw;
-    line-height: 3.5vw;
+  .container {
+    max-width: 700px;
+    margin: 20px auto 0 auto;
+    padding: 10px 20px;
   }
+
+  h1 {
+    font-size: 8.8vw;
+    line-height: 3.5vw;
+    margin-bottom: 20px;
+  }
+
   .columns {
     display: block;
+    margin: 0;
   }
 
   .columns > div {
@@ -87,6 +96,14 @@ h2 {
   .columns > div:first-child {
   	margin-right: 0px;
     margin-bottom: 40px;
+  }
+
+  .columns > div:last-child {
+    margin-bottom: 40px;
+  }
+
+  #webfont, #fallback {
+    margin: 0;
   }
 }
 
