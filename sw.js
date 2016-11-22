@@ -1,14 +1,14 @@
-var VERSION = '0.0.4';
+var VERSION = '0.0.1';
 
 this.addEventListener('install', function(e) {
   e.waitUntil(caches.open(VERSION).then(cache => {
     return cache.addAll([
-      '/font-height-matcher/',
-      '/font-height-matcher/index.html',
-      '/font-height-matcher/style.css',
-      '/font-height-matcher/app.js',
-      '/font-height-matcher/manifest.json',
-      '/font-height-matcher/images/favicon.ico',
+      '/font-style-matcher/',
+      '/font-style-matcher/index.html',
+      '/font-style-matcher/style.css',
+      '/font-style-matcher/app.js',
+      '/font-style-matcher/manifest.json',
+      '/font-style-matcher/images/favicon.ico',
     ]).then(_ => this.skipWaiting());
 }))});
 
@@ -16,7 +16,7 @@ this.addEventListener('fetch', function(e) {
   e.respondWith(caches.match(e.request).then((res) => {
     // If there is no match in the cache, we get undefined back,
     // in that case go to the network!
-    return res ? res : handleNoCacheMatch(e);
+    return res || fetch(e.request)
   }));
 });
 
@@ -30,15 +30,3 @@ this.addEventListener('activate', function(e) {
       return this.clients.claim()
     });
 }))});
-
-// fetch from network
-// and put into our cache
-function handleNoCacheMatch(e) {
-  return fetch(e.request).then(res => {
-    return caches.open(VERSION).then(cache => {
-      cache.put(e.request, res.clone());
-
-      return res;
-    });
-  });
-}
