@@ -30,6 +30,17 @@
   <meta name="msapplication-TileImage" content="./images/icon-144x144.png">
 
   <link rel="stylesheet" type="text/css" href="./style.css">
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/font-style-matcher/sw.js', {scope: '/font-style-matcher/'}).then(_ => {
+        console.log('service worker is cool 🐳');
+      }).catch(e => {
+        console.error('service worker is not so cool 🔥', e);
+        throw e;
+      });
+    }
+  </script>
 </head>
 <body>
   <div class="container">
