@@ -1,13 +1,14 @@
-var VERSION = '0.0.2';
+var VERSION = '0.0.3';
 
 this.addEventListener('install', function(e) {
   e.waitUntil(caches.open(VERSION).then(cache => {
     return cache.addAll([
-      './',
-      './index.html',
-      './style.css',
-      './app.js',
-      './manifest.json',
+      '/font-height-matcher/',
+      '/font-height-matcher/index.html',
+      '/font-height-matcher/style.css',
+      '/font-height-matcher/app.js',
+      '/font-height-matcher/manifest.json',
+      '/font-height-matcher/images/favicon.ico',
     ]).then(_ => this.skipWaiting());
 }))});
 

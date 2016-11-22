@@ -1,15 +1,7 @@
 {
-  "name": "Font Height Matcher",
-  "short_name": "Font Height Matcher",
+  "name": "Font Style Matcher",
+  "short_name": "Font Style Matcher",
   "icons": [{
-      "src": "images/icon-36x36.png",
-      "sizes": "36x36",
-      "type": "image/png"
-  }, {
-      "src": "images/icon-48x48.png",
-      "sizes": "48x48",
-      "type": "image/png"
-  }, {
       "src": "images/icon-72x72.png",
       "sizes": "72x72",
       "type": "image/png"
@@ -28,7 +20,7 @@
   }],
   "display": "fullscreen",
   "orientation": "portrait",
-  "background_color": "#212121",
-  "theme_color": "#202020",
+  "background_color": "#fff200",
+  "theme_color": "#fff200",
   "start_url": "index.html"
 }
