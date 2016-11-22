@@ -3,7 +3,7 @@
 
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/font-style-matcher/sw.js', {scope: '/font-style-matcher/'}).then(_ => {
-      console.log('service worker is all cool 🐳');
+      console.log('service worker is cool 🐳');
     }).catch(e => {
       console.error('service worker is not so cool 🔥', e);
       throw e;
