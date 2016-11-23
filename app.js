@@ -1,6 +1,8 @@
 (function() {
   'use strict';
-  
+
+  getAllGoogleFonts();
+
   simulateFout.addEventListener('change', fout);
   downloadFont.addEventListener('change', download);
   useColours.addEventListener('change', colour);
@@ -123,5 +125,23 @@
   function colour() {
     var shouldColour = useColours.checked;
     fallbackOutput.style.color = shouldColour ? 'red' : 'black';
+  }
+
+  function getAllGoogleFonts() {
+    var request = new XMLHttpRequest();
+    var url = 'https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyAkX01E9DhABr4cn4tKD26JuHQstaT5-Ss';
+    request.open('GET', url, true);
+    request.onreadystatechange = function() {
+      if (request.readyState == 4 && request.status == 200) {
+        var data = JSON.parse(request.responseText);
+        var names = data.items;
+        var options = '';
+        for (var i = 0; i < names.length; i++) {
+          options += '<option value="'+ names[i].family +'"/>'; ;
+        }
+        document.getElementById('families').innerHTML = options;
+      }
+    };
+    request.send();
   }
 })();

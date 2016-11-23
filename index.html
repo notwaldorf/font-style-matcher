@@ -100,8 +100,9 @@
       <div>
         <div class="input-field" title="Type a different font family, like 'Arial', and tab away from the input to see a preview of it.">
           <input value="Merriweather" placeholder="Web font name" class="with-checkbox"
-              id="webfontName"
+              id="webfontName" list="families"
               data-target="webfont">
+          <datalist id="families"></datalist>
           <label for="webfontName">Web font</label>
           <input id="downloadFont" type="checkbox" checked>
           <span class="text">Download from Google Fonts</span>
