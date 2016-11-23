@@ -85,6 +85,7 @@
     if (!event.target.checked) {
       clearTimeout(window.__timeout1);
       clearTimeout(window.__timeout2);
+      clearTimeout(window.__timeout3);
       fallbackOutput.style.visibility = 'visible';
       webfontOutput.style.visibility = 'visible';
     } else {
@@ -99,10 +100,10 @@
     window.__timeout1 = setTimeout(function() {
       fallbackOutput.style.visibility = 'visible';
 
-      setTimeout(function() {
+      window.__timeout2 = setTimeout(function() {
         fallbackOutput.style.visibility = 'hidden';
         webfontOutput.style.visibility = 'visible';
-        window.__timeout2 = setTimeout(startFout, 1000);
+        window.__timeout3 = setTimeout(startFout, 1000);
       }, 500);
     }, 100)
   }
