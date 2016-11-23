@@ -33,6 +33,11 @@
   webfontSpacing.addEventListener('change', updateFontSpacing);
   webfontSpacing.addEventListener('input', updateFontSpacing);
 
+  fallbackWordSpacing.addEventListener('change', updateFontWordSpacing);
+  fallbackWordSpacing.addEventListener('input', updateFontWordSpacing);
+  webfontWordSpacing.addEventListener('change', updateFontWordSpacing);
+  webfontWordSpacing.addEventListener('input', updateFontWordSpacing);
+
   fallbackWeight.addEventListener('change', updateFontWeight);
   fallbackWeight.addEventListener('input', updateFontWeight);
   webfontWeight.addEventListener('change', updateFontWeight);
@@ -60,6 +65,14 @@
     updateStyle('letter-spacing', which, value);
     updateStyle('letter-spacing', which + 'Output', value);
     document.getElementById(which + 'SpacingDisplay').textContent = value;
+  }
+
+  function updateFontWordSpacing(event) {
+    var value = event.target.value + 'px';
+    var which = event.target.dataset.target;
+    updateStyle('word-spacing', which, value);
+    updateStyle('word-spacing', which + 'Output', value);
+    document.getElementById(which + 'WordSpacingDisplay').textContent = value;
   }
 
   function updateFontFamily(event) {
