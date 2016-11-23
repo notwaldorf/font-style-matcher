@@ -43,6 +43,19 @@
   webfontWeight.addEventListener('change', updateFontWeight);
   webfontWeight.addEventListener('input', updateFontWeight);
 
+  webfontOutput.addEventListener('blur', changeText);
+  webfontOutput.addEventListener('focus', clearText);
+
+  function clearText() {
+    fallbackOutput.style.height = this.offsetHeight + 'px';
+    fallbackOutput.innerHTML = "";
+  }
+
+  function changeText() {
+    fallbackOutput.style.height = 'auto';
+    fallbackOutput.innerHTML = this.innerHTML;
+  }
+
   function updateFontSize(event) {
     var value = event.target.value + 'px';
     var which = event.target.dataset.target;
