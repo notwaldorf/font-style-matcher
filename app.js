@@ -18,29 +18,19 @@
   fallbackName.addEventListener('input', updateFontFamily);
   webfontName.addEventListener('input', updateFontFamily);
 
-  fallbackSize.addEventListener('change', updateFontSize);
   fallbackSize.addEventListener('input', updateFontSize);
-  webfontSize.addEventListener('change', updateFontSize);
   webfontSize.addEventListener('input', updateFontSize);
 
-  fallbackLineHeight.addEventListener('change', updateLineHeight);
   fallbackLineHeight.addEventListener('input', updateLineHeight);
-  webfontLineHeight.addEventListener('change', updateLineHeight);
   webfontLineHeight.addEventListener('input', updateLineHeight);
 
-  fallbackSpacing.addEventListener('change', updateFontSpacing);
   fallbackSpacing.addEventListener('input', updateFontSpacing);
-  webfontSpacing.addEventListener('change', updateFontSpacing);
   webfontSpacing.addEventListener('input', updateFontSpacing);
 
-  fallbackWordSpacing.addEventListener('change', updateFontWordSpacing);
   fallbackWordSpacing.addEventListener('input', updateFontWordSpacing);
-  webfontWordSpacing.addEventListener('change', updateFontWordSpacing);
   webfontWordSpacing.addEventListener('input', updateFontWordSpacing);
 
-  fallbackWeight.addEventListener('change', updateFontWeight);
   fallbackWeight.addEventListener('input', updateFontWeight);
-  webfontWeight.addEventListener('change', updateFontWeight);
   webfontWeight.addEventListener('input', updateFontWeight);
 
   webfontOutput.addEventListener('blur', changeText);
