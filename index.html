@@ -94,6 +94,13 @@
               data-target="fallback">
           <label>Letter spacing: <span id="fallbackSpacingDisplay">0px</span></label>
         </div>
+
+        <div class="input-field">
+          <input type="range" value="0" min="-2" max="2" step="0.05"
+              id="fallbackWordSpacing"
+              data-target="fallback">
+          <label>Word spacing: <span id="fallbackWordSpacingDisplay">0px</span></label>
+        </div>
         <p id="fallback">The fox jumped over the lazy dog, the scoundrel.</p>
       </div>
 
@@ -138,6 +145,13 @@
               id="webfontSpacing"
               data-target="webfont">
           <label>Letter spacing: <span id="webfontSpacingDisplay">0px</span></label>
+        </div>
+
+        <div class="input-field">
+          <input type="range" value="0" min="-2" max="2" step="0.05"
+              id="webfontWordSpacing"
+              data-target="webfont">
+          <label>Word spacing: <span id="webfontWordSpacingDisplay">0px</span></label>
         </div>
 
         <p id="webfont">The fox jumped over the lazy dog, the scoundrel.</p>
