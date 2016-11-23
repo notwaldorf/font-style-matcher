@@ -15,8 +15,8 @@
   fallback.style.lineHeight = fallbackOutput.style.lineHeight = '28px';
   webfont.style.lineHeight = webfontOutput.style.lineHeight = '28px';
 
-  fallbackName.addEventListener('change', updateFontFamily);
-  webfontName.addEventListener('change', updateFontFamily);
+  fallbackName.addEventListener('input', updateFontFamily);
+  webfontName.addEventListener('input', updateFontFamily);
 
   fallbackSize.addEventListener('change', updateFontSize);
   fallbackSize.addEventListener('input', updateFontSize);
