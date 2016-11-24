@@ -12,8 +12,8 @@
   webfont.style.fontFamily = webfontOutput.style.fontFamily = webfontName.value;
   fallback.style.fontSize = fallbackOutput.style.fontSize = '16px';
   webfont.style.fontSize = webfontOutput.style.fontSize = '16px';
-  fallback.style.lineHeight = fallbackOutput.style.lineHeight = '28px';
-  webfont.style.lineHeight = webfontOutput.style.lineHeight = '28px';
+  fallback.style.lineHeight = fallbackOutput.style.lineHeight = '1.8'
+  webfont.style.lineHeight = webfontOutput.style.lineHeight = '1.8';
 
   fallbackName.addEventListener('input', updateFontFamily);
   webfontName.addEventListener('input', updateFontFamily);
@@ -36,6 +36,8 @@
   webfontOutput.addEventListener('blur', changeText);
   webfontOutput.addEventListener('focus', clearText);
 
+  useUnitless.addEventListener('change', unitlessLineHeight);
+
   function clearText() {
     fallbackOutput.style.height = this.offsetHeight + 'px';
     fallbackOutput.innerHTML = "";
@@ -55,7 +57,8 @@
   }
 
   function updateLineHeight(event) {
-    var value = event.target.value + 'px';
+    var unitlessLH = useUnitless.checked;
+    var value = unitlessLH ? event.target.value : event.target.value + 'px';
     var which = event.target.dataset.target;
     updateStyle('line-height', which, value);
     updateStyle('line-height', which + 'Output', value);
@@ -142,6 +145,46 @@
   function colour() {
     var shouldColour = useColours.checked;
     fallbackOutput.style.color = shouldColour ? 'red' : 'black';
+  }
+
+  function unitlessLineHeight() {
+    var unitlessLH = useUnitless.checked;
+
+    // reset to defaults
+    document.getElementById('unitlessText').style.display = '';
+
+    webfontLineHeight.setAttribute('min', '0.5');
+    webfontLineHeight.setAttribute('max', '3.5');
+    webfontLineHeight.setAttribute('step', '0.05');
+    webfontLineHeight.value = '1.8';
+
+    fallbackLineHeight.setAttribute('min', '0.5');
+    fallbackLineHeight.setAttribute('max', '3.5');
+    fallbackLineHeight.setAttribute('step', '0.05');
+    fallbackLineHeight.value = '1.8';
+
+    // if px set new values to input range
+    if (!unitlessLH) {
+      document.getElementById('unitlessText').style.display = 'none';
+
+      webfontLineHeight.setAttribute('min', '5');
+      webfontLineHeight.setAttribute('max', '100');
+      webfontLineHeight.setAttribute('step', '1');
+      webfontLineHeight.value = '28';
+
+      fallbackLineHeight.setAttribute('min', '5');
+      fallbackLineHeight.setAttribute('max', '100');
+      fallbackLineHeight.setAttribute('step', '1');
+      fallbackLineHeight.value = '28';
+
+    }
+
+    // trigger event
+    var event = document.createEvent('HTMLEvents');
+    event.initEvent('input', true, false);
+
+    fallbackLineHeight.dispatchEvent(event);
+    webfontLineHeight.dispatchEvent(event);
   }
 
   function getAllGoogleFonts() {
