@@ -83,6 +83,10 @@
     var which = event.target.dataset.target;
     updateStyle('font-family', which, value);
     updateStyle('font-family', which + 'Output', value);
+
+    if (which === 'webfont') {
+      download();
+    }
   }
 
   function updateFontWeight(event) {
