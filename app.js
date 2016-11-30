@@ -99,6 +99,12 @@
 
   function updateStyle(name, element, value) {
     document.getElementById(element).style[name] = value;
+    updateOutput()
+  }
+
+  function updateOutput() {
+    fallbackOutputCss.value = fallbackOutput.style.cssText.split('; ').join('\n');
+    webfontOutputCss.value = webfontOutput.style.cssText.split('; ').join('\n');
   }
 
   function fout(event) {

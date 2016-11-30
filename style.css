@@ -196,6 +196,17 @@ h2 {
   right: 0;
 }
 
+.output-css textarea {
+  height: 90px;
+  width: 100%;
+  max-width: 100%;
+  padding: 10px;
+  margin: 0;
+  box-sizing: border-box;
+  float: left;
+  display: inline-block;
+}
+
 footer {
   margin-top: 50px;
   padding-top: 8px;
