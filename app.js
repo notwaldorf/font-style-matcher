@@ -36,6 +36,8 @@
   webfontOutput.addEventListener('blur', changeText);
   webfontOutput.addEventListener('focus', clearText);
 
+  updateClipboardButton()
+
   function clearText() {
     fallbackOutput.style.height = this.offsetHeight + 'px';
     fallbackOutput.innerHTML = "";
@@ -99,6 +101,14 @@
 
   function updateStyle(name, element, value) {
     document.getElementById(element).style[name] = value;
+    updateClipboardButton()
+  }
+
+  function updateClipboardButton() {
+    var fallbackCss = fallbackOutput.style.cssText.split('; ').join('\n');
+    var webfontCss = webfontOutput.style.cssText.split('; ').join('\n');
+    document.getElementById('fallbackClipboardCssButton').setAttribute('data-clipboard-text', fallbackCss)
+    document.getElementById('webfontClipboardCssButton').setAttribute('data-clipboard-text', webfontCss)
   }
 
   function fout(event) {

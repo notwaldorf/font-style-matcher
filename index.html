@@ -41,6 +41,9 @@
       });
     }
   </script>
+
+  <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.16/clipboard.min.js"></script>
+
 </head>
 <body>
   <div class="container">
@@ -102,6 +105,7 @@
           <label>Word spacing: <span id="fallbackWordSpacingDisplay">0px</span></label>
         </div>
         <p id="fallback">The fox jumped over the lazy dog, the scoundrel.</p>
+        <button id="fallbackClipboardCssButton" data-clipboard-text="">Copy CSS to clipboard</button>
       </div>
 
       <div>
@@ -155,6 +159,7 @@
         </div>
 
         <p id="webfont">The fox jumped over the lazy dog, the scoundrel.</p>
+        <button id="webfontClipboardCssButton" data-clipboard-text="">Copy CSS to clipboard</button>
       </div>
     </div>
 
@@ -189,4 +194,5 @@
 </body>
 
 <script src="./app.js"></script>
+<script src="./copy.js"></script>
 </html>
