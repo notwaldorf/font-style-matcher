@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  new Clipboard('.clipboardButton');
+  var clipboard = new Clipboard('.clipboardButton');
   updateClipboardButtons();
 
   getAllGoogleFonts();
@@ -38,6 +38,23 @@
 
   webfontOutput.addEventListener('blur', changeText);
   webfontOutput.addEventListener('focus', clearText);
+
+
+  clipboard.on('success', function(e) {
+    var span = e.trigger.querySelector('span')
+    span.textContent = 'Copied!';
+    setTimeout(function() {
+      span.textContent = 'Copy CSS to clipboard';
+    }, 1000);
+  });
+
+  clipboard.on('error', function(e) {
+    var span = e.trigger.querySelector('span')
+    span.textContent = 'Error copying :(';
+    setTimeout(function() {
+      span.textContent = 'Copy CSS to clipboard';
+    }, 1000);
+  });
 
   function clearText() {
     fallbackOutput.style.height = this.offsetHeight + 'px';

@@ -216,6 +216,7 @@ hr {
   cursor: pointer;
   position: relative;
   font-size: 14px;
+  padding: 0;
 }
 
 .clipboardButton svg {
