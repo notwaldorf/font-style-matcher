@@ -19,14 +19,14 @@ p {
   line-height: 1.8em;
 }
 
-a:link, a:visited {
+a:link, a:visited, button.clipboardButton {
   color: #3F51B5;
   text-decoration: none;
   padding-bottom: 5px;
   padding-top: 5px;
 }
 
-a:hover {
+a:hover, button.clipboardButton:hover {
   background-color: #fde100;
   border-radius: 3px;
   text-decoration: none;
@@ -208,4 +208,17 @@ footer {
 
 hr {
   background: red;
+}
+
+.clipboardButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  font-size: 14px;
+}
+
+.clipboardButton svg {
+  vertical-align: middle;
+  fill: #3F51B5;
 }
