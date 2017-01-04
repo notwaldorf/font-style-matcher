@@ -107,8 +107,8 @@
   function updateClipboardButton() {
     var fallbackCss = fallbackOutput.style.cssText.split('; ').join('\n');
     var webfontCss = webfontOutput.style.cssText.split('; ').join('\n');
-    document.getElementById('fallbackClipboardCssButton').setAttribute('data-clipboard-text', fallbackCss)
-    document.getElementById('webfontClipboardCssButton').setAttribute('data-clipboard-text', webfontCss)
+    document.getElementById('fallbackClipboardButton').setAttribute('data-clipboard-text', fallbackCss)
+    document.getElementById('webfontClipboardButton').setAttribute('data-clipboard-text', webfontCss)
   }
 
   function fout(event) {

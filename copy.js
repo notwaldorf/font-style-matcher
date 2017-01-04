@@ -1,5 +1,4 @@
 (function() {
   'use strict';
-  new Clipboard('#fallbackClipboardCssButton');
-  new Clipboard('#webfontClipboardCssButton');
+  new Clipboard('.clipboardButton');
 })();
