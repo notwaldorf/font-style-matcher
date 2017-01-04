@@ -75,7 +75,7 @@
   }
 
   function updateLineHeight(event) {
-    var value = event.target.value + 'px';
+    var value = event.target.value;
     var which = event.target.dataset.target;
     updateStyle('line-height', which, value);
     updateStyle('line-height', which + 'Output', value);
