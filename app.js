@@ -2,7 +2,6 @@
   'use strict';
 
   var clipboard = new Clipboard('.clipboardButton');
-  updateClipboardButtons();
 
   getAllGoogleFonts();
 
@@ -17,6 +16,8 @@
   webfont.style.fontSize = webfontOutput.style.fontSize = '16px';
   fallback.style.lineHeight = fallbackOutput.style.lineHeight = '28px';
   webfont.style.lineHeight = webfontOutput.style.lineHeight = '28px';
+
+  updateClipboardButtons();
 
   fallbackName.addEventListener('input', updateFontFamily);
   webfontName.addEventListener('input', updateFontFamily);
