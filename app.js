@@ -331,6 +331,30 @@
     var state = history.state;
     if (state) {
       restoreFromState(state);
+      return;
+    }
+
+    if (window.location.search) {
+      var state = window.location.search
+        // removes leading ?
+        .slice(1)
+        // split queryparams
+        .split('&')
+        // keyvalye example: fallback[weight]=600
+        .reduce(function(state, keyvalue) {
+          keyvalue = keyvalue.split('=');
+          var key = keyvalue[0];
+          var value = keyvalue[1];
+          var font = key.split('[')[0];
+          var prop = key.split('[')[1].slice(0, -1);
+          state[font][prop] = value;
+          return state;
+        }, {
+          fallback: {},
+          webfont: {}
+        });
+
+      restoreFromState(state);
     }
   });
 })();
