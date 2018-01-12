@@ -18,26 +18,68 @@
   webfont.style.lineHeight = webfontOutput.style.lineHeight = '1.6';
   updateClipboardButtons();
 
-  fallbackName.addEventListener('input', updateFontFamily);
-  webfontName.addEventListener('input', updateFontFamily);
+  fallbackName.addEventListener('input', function(e) {
+    writeStateToHistory();
+    updateFontFamily(e);
+  });
+  webfontName.addEventListener('input', function (e) {
+    writeStateToHistory();
+    updateFontFamily(e);
+  });
 
-  fallbackSize.addEventListener('input', updateFontSize);
-  webfontSize.addEventListener('input', updateFontSize);
+  fallbackSize.addEventListener('input', function (e) {
+    writeStateToHistory();
+    updateFontSize(e);
+  });
+  webfontSize.addEventListener('input', function (e) {
+    writeStateToHistory();
+    updateFontSize(e);
+  });
 
-  fallbackLineHeight.addEventListener('input', updateLineHeight);
-  webfontLineHeight.addEventListener('input', updateLineHeight);
+  fallbackLineHeight.addEventListener('input', function (e) {
+    writeStateToHistory();
+    updateLineHeight(e);
+  });
+  webfontLineHeight.addEventListener('input', function (e) {
+    writeStateToHistory();
+    updateLineHeight(e);
+  });
 
-  fallbackSpacing.addEventListener('input', updateFontSpacing);
-  webfontSpacing.addEventListener('input', updateFontSpacing);
+  fallbackSpacing.addEventListener('input', function (e) {
+    writeStateToHistory();
+    updateFontSpacing(e);
+  });
+  webfontSpacing.addEventListener('input', function (e) {
+    writeStateToHistory();
+    updateFontSpacing(e);
+  });
 
-  fallbackWordSpacing.addEventListener('input', updateFontWordSpacing);
-  webfontWordSpacing.addEventListener('input', updateFontWordSpacing);
+  fallbackWordSpacing.addEventListener('input', function (e) {
+    writeStateToHistory();
+    updateFontWordSpacing(e);
+  });
+  webfontWordSpacing.addEventListener('input', function (e) {
+    writeStateToHistory();
+    updateFontWordSpacing(e);
+  });
 
-  fallbackWeight.addEventListener('input', updateFontWeight);
-  webfontWeight.addEventListener('input', updateFontWeight);
+  fallbackWeight.addEventListener('input', function (e) {
+    writeStateToHistory();
+    updateFontWeight(e);
+  });
+  webfontWeight.addEventListener('input', function (e) {
+    writeStateToHistory();
+    updateFontWeight(e);
+  });
 
-  webfontOutput.addEventListener('blur', changeText);
-  webfontOutput.addEventListener('focus', clearText);
+  webfontOutput.addEventListener('blur', function (e) {
+    writeStateToHistory();
+    changeText(e);
+  });
+  webfontOutput.addEventListener('focus', function (e) {
+    writeStateToHistory();
+    clearText(e);
+  });
 
 
   clipboard.on('success', function(e) {
@@ -197,4 +239,122 @@
     };
     request.send();
   }
+
+
+  // Stores data from inputs to state object
+  function storeToState() {
+    var fallback = {
+      name: fallbackName.value,
+      size: fallbackSize.value,
+      lineHeight: fallbackLineHeight.value,
+      spacing: fallbackSpacing.value,
+      wordSpacing: fallbackWordSpacing.value,
+      weight: fallbackWeight.value
+    }
+
+    var webfont = {
+      name: webfontName.value,
+      size: webfontSize.value,
+      lineHeight: webfontLineHeight.value,
+      spacing: webfontSpacing.value,
+      wordSpacing: webfontWordSpacing.value,
+      weight: webfontWeight.value
+    }
+
+    return {
+      fallback: fallback,
+      webfont: webfont
+    }
+  }
+
+
+  // Restores inputs values from state object and triggers 'input' event for each input
+  function restoreFromState(state) {
+    fallbackName.value = state.fallback.name;
+    fallbackSize.value = state.fallback.size;
+    fallbackLineHeight.value = state.fallback.lineHeight;
+    fallbackSpacing.value = state.fallback.spacing;
+    fallbackWordSpacing.value = state.fallback.wordSpacing;
+    fallbackWeight.value = state.fallback.weight;
+
+    webfontName.value = state.webfont.name;
+    webfontSize.value = state.webfont.size;
+    webfontLineHeight.value = state.webfont.lineHeight;
+    webfontSpacing.value = state.webfont.spacing;
+    webfontWordSpacing.value = state.webfont.wordSpacing;
+    webfontWeight.value = state.webfont.weight;
+
+    var inputs = [
+      fallbackName,
+      fallbackSize,
+      fallbackLineHeight,
+      fallbackSpacing,
+      fallbackWordSpacing,
+      fallbackWeight,
+      webfontName,
+      webfontSize,
+      webfontLineHeight,
+      webfontSpacing,
+      webfontWordSpacing,
+      webfontWeight
+    ];
+
+    // Need to updates texts
+    inputs.forEach(function(input) {
+      input.dispatchEvent(new Event('input'))
+    });
+  }
+
+
+  function writeStateToHistory() {
+    var state = storeToState();
+    var queryString = '?'
+    var params = []
+    for(var key in state.fallback) {
+      params.push('fallback[' + key + ']=' + state.fallback[key]);
+    }
+
+    for(var key in state.webfont) {
+      params.push('webfont[' + key + ']=' + state.webfont[key]);
+    }
+
+    queryString += params.join('&');
+
+    history.replaceState(state, '', queryString);
+  }
+
+  window.addEventListener('popstate', function(e){
+    restoreFromState(e.state);
+  }, false);
+
+  window.addEventListener('load', function() {
+    var state = history.state;
+    if (state) {
+      restoreFromState(state);
+      return;
+    }
+
+    if (window.location.search) {
+      var state = window.location.search
+        // removes leading ?
+        .slice(1)
+        // split queryparams
+        .split('&')
+        // keyvalye example: fallback[weight]=600
+        .reduce(function(state, keyvalue) {
+          keyvalue = keyvalue.split('=');
+          var key = keyvalue[0];
+          var value = keyvalue[1];
+          var font = key.split('[')[0];
+          var prop = key.split('[')[1].slice(0, -1);
+          state[font][prop] = value;
+          return state;
+        }, {
+          fallback: {},
+          webfont: {}
+        });
+
+      restoreFromState(state);
+    }
+  });
 })();
