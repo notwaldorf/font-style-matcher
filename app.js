@@ -8,6 +8,12 @@
   simulateFout.addEventListener('change', fout);
   downloadFont.addEventListener('change', download);
   useColours.addEventListener('change', colour);
+  uploadFont.addEventListener('change', upload);
+  uploadFontBtn.addEventListener('click', uploadBtn);
+  document.addEventListener('dragover', function(event) { event.preventDefault(); });
+  document.addEventListener('dragenter', dragEnter);
+  document.addEventListener('dragleave', dragLeave);
+  document.addEventListener('drop', drop);
   download();
 
   fallback.style.fontFamily = fallbackOutput.style.fontFamily = fallbackName.value;
@@ -190,11 +196,72 @@
         var names = data.items;
         var options = '';
         for (var i = 0; i < names.length; i++) {
-          options += '<option value="'+ names[i].family +'"/>'; ;
+          options += '<option value="'+ names[i].family +'"/>';
         }
         document.getElementById('families').innerHTML = options;
       }
     };
     request.send();
+  }
+
+  var currentObjectURL = '';
+
+  function upload() {
+    var file = uploadFont.files[0];
+    if (!file) return;
+    processFile(file);
+  }
+
+  function processFile(file) {
+    if (currentObjectURL) {
+      URL.revokeObjectURL(currentObjectURL);
+    }
+
+    var cssName = JSON.stringify(file.name);
+    var style = document.createElement('style');
+
+    webfontName.value = file.name;
+    currentObjectURL = URL.createObjectURL(file);
+    style.textContent = `
+      @font-face {
+        font-family: ${cssName};
+        src: url(${JSON.stringify(currentObjectURL)});
+      }
+    `;
+
+    document.head.appendChild(style);
+    updateStyle('font-family', 'webfont', cssName);
+    updateStyle('font-family', 'webfont' + 'Output', cssName);
+  }
+
+  function uploadBtn(event) {
+    event.preventDefault();
+    uploadFont.click();
+  }
+
+  // lol drag & drop is still horrible
+  var enterCount = 0;
+
+  function dragEnter() {
+    enterCount++;
+    dropAlert.style.opacity = 1;
+  }
+
+  function dragLeave() {
+    enterCount--;
+
+    if (!enterCount) {
+      dropAlert.style.opacity = 0;
+    }
+  }
+
+  function drop(event) {
+    event.preventDefault();
+    enterCount = 0;
+    dropAlert.style.opacity = 0;
+
+    var file = event.dataTransfer.files[0];
+    if (!file) return;
+    processFile(file);
   }
 })();
