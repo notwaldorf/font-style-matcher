@@ -239,6 +239,7 @@
     uploadFont.click();
   }
 
+  var supportedExtensions = uploadFont.accept.split(',');
   // lol drag & drop is still horrible
   var enterCount = 0;
 
@@ -262,6 +263,12 @@
 
     var file = event.dataTransfer.files[0];
     if (!file) return;
+
+    var fileSupported = supportedExtensions.some(function(ext) {
+      return file.name.endsWith(ext);
+    });
+
+    if (!fileSupported) return;
     processFile(file);
   }
 })();
