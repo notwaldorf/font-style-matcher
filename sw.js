@@ -1,5 +1,5 @@
 const APP_PREFIX = 'FontStyleMatcher_';   // Identifier for this app (this needs to be consistent across every cache update)
-const VERSION = '0.0.14';                 // Version of the off-line cache (change this value everytime you want to update cache)
+const VERSION = '0.0.15';                 // Version of the off-line cache (change this value everytime you want to update cache)
 const CACHE_NAME = APP_PREFIX + VERSION;
 const URLS = [                            // Add URL you want to cache in this list.
   '/font-style-matcher/',
