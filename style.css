@@ -19,14 +19,14 @@ p {
   line-height: 1.8em;
 }
 
-a:link, a:visited, button.clipboardButton {
+a:link, a:visited, button.actionButton {
   color: #3F51B5;
   text-decoration: none;
   padding-bottom: 5px;
   padding-top: 5px;
 }
 
-a:hover, button.clipboardButton:hover {
+a:hover, button.actionButton:hover {
   background-color: #fde100;
   border-radius: 3px;
   text-decoration: none;
@@ -129,7 +129,7 @@ h2 {
   border-bottom: 1px solid #9e9e9e;
   border-radius: 0;
   outline: none;
-  margin: 12px 0 24px 0;
+  margin: 12px 0 60px 0;
   padding-top: 4px;
   padding-bottom: 5px;  /* so that the 2px focused border doesn't jump */
   box-shadow: none;
@@ -210,7 +210,7 @@ hr {
   background: red;
 }
 
-.clipboardButton {
+.actionButton {
   background: transparent;
   border: none;
   cursor: pointer;
@@ -219,7 +219,30 @@ hr {
   padding: 0;
 }
 
-.clipboardButton svg {
+.actionButton svg {
   vertical-align: middle;
   fill: #3F51B5;
+  width: 24px;
+  height: 24px;
+}
+
+.uploadFont {
+  display: none;
+}
+
+.dropAlert {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  font-size: 13vmin;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+  opacity: 0;
 }
