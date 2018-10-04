@@ -24,6 +24,8 @@
   webfont.style.lineHeight = webfontOutput.style.lineHeight = '1.6';
   updateClipboardButtons();
 
+  updateClipboardButtons();
+
   fallbackName.addEventListener('input', updateFontFamily);
   webfontName.addEventListener('input', updateFontFamily);
 
@@ -129,14 +131,22 @@
   }
 
   function updateClipboardButtons() {
-    var fallbackCss = fallbackOutput.style.cssText.split('; ').join('\n');
-    var webfontCss = webfontOutput.style.cssText.split('; ').join('\n');
+    var fallbackCss = formatCSS(fallbackOutput.style.cssText, '.fallback');
+    var webfontCss = formatCSS(webfontOutput.style.cssText, '.webfont');
     document
         .getElementById('fallbackClipboardButton')
         .setAttribute('data-clipboard-text', fallbackCss);
     document
         .getElementById('webfontClipboardButton')
         .setAttribute('data-clipboard-text', webfontCss);
+  }
+
+  function formatCSS(originalString, selector) {
+    var selector = selector || '.something'
+    var formattedString = ''
+    formattedString = originalString.slice(0,-1).split('; ').join(';\n')
+    formattedString = `${selector} {\n${formattedString};\n}`
+    return formattedString
   }
 
   function fout(event) {
