@@ -1,6 +1,6 @@
 # font-style-matcher
 
-If you're using a web font, you're bound to see a flash of unstyled text (or FOUC),
+If you're using a web font, you're bound to see a flash of unstyled text (or FOUT),
 between the initial render of your websafe font and the webfont that you've chosen.
 
 This usually results in a jarring shift in layout, due to
